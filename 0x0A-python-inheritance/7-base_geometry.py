@@ -1,16 +1,19 @@
 #!/usr/bin/python3
-"""Define BaseGeometry class."""
+"""
+Holds the class superclass BaseGeometry
+"""
+Base = __import__('6-base_geometry').BaseGeometry
 
 
-class BaseGeometry:
-    """Base Geometry."""
-    def area(self):
-        """Not implemented"""
-        raise Exception("area() is not implemented")
+class BaseGeometry(Base):
+    """BaseGeometry class containing area and integer_validator
+    """
 
     def integer_validator(self, name, value):
-        """Validates value"""
-        if type(value) not in [int]:
-            raise TypeError(f"{name} must be an integer")
+        """Validates input passed to match conditions provided
+        """
+
+        if type(value) is not int:
+            raise TypeError("{:s} must be integer".format(name))
         if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
+            raise ValueError("{:s} must be greater than 0".format(name))
